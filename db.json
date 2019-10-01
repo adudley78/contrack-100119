@@ -1,25 +1,25 @@
 {
   "tasks": [
     {
-      "id": 1,
-      "message": "Submit building permits application",
-      "inspection": false,
-      "date": "10-01-2019",
-      "contractor": "Luke Hansen"
+      "punchId": 1,
+      "taskName": "Submit building permits application",
+      "contractor": "Luke Hansen",
+      "dueDate": "10-10-2019",
+      "complete": false
     },
     {
-      "id": 2,
-      "message": "Set up surveillance system for jobsite security",
-      "inspection": true,
-      "date": "09-30-2019",
-      "contractor": "Levi Nelson"
+      "punchId": 2,
+      "taskName": "Set up surveillance system for jobsite security",
+      "contractor": "Levi Nelson",
+      "dueDate": "10-15-2019",
+      "complete": true
     },
     {
-      "id": 3,
-      "message": "Provision portable toilets",
-      "inspection": false,
-      "date": "10-02-2019",
-      "contractor": "Adam Dudley"
+      "punchId": 3,
+      "taskName": "Provision portable toilets",
+      "contractor": "Adam Dudley",
+      "dueDate": "10-20-2019",
+      "complete": false
     }
   ],
   "contractors": [
@@ -37,11 +37,6 @@
       "id": 3,
       "firstName": "Adam",
       "lastName": "Dudley"
-    },
-    {
-      "firstName": "Kyle",
-      "lastName": "King",
-      "id": 4
     }
   ]
 }
