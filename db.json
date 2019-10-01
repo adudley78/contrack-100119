@@ -1,0 +1,47 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "message": "Submit building permits application",
+      "inspection": false,
+      "date": "10-01-2019",
+      "contractor": "Luke Hansen"
+    },
+    {
+      "id": 2,
+      "message": "Set up surveillance system for jobsite security",
+      "inspection": true,
+      "date": "09-30-2019",
+      "contractor": "Levi Nelson"
+    },
+    {
+      "id": 3,
+      "message": "Provision portable toilets",
+      "inspection": false,
+      "date": "10-02-2019",
+      "contractor": "Adam Dudley"
+    }
+  ],
+  "contractors": [
+    {
+      "id": 1,
+      "firstName": "Luke",
+      "lastName": "Hansen"
+    },
+    {
+      "id": 2,
+      "firstName": "Levi",
+      "lastName": "Nelson"
+    },
+    {
+      "id": 3,
+      "firstName": "Adam",
+      "lastName": "Dudley"
+    },
+    {
+      "firstName": "Kyle",
+      "lastName": "King",
+      "id": 4
+    }
+  ]
+}
