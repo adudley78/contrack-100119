@@ -2,21 +2,21 @@
   "tasks": [
     {
       "punchId": 1,
-      "taskName": "Submit building permits application",
+      "description": "Submit building permits application",
       "contractor": "Luke Hansen",
       "dueDate": "10-10-2019",
       "complete": false
     },
     {
       "punchId": 2,
-      "taskName": "Set up surveillance system for jobsite security",
+      "description": "Set up surveillance system for jobsite security",
       "contractor": "Levi Nelson",
       "dueDate": "10-15-2019",
       "complete": true
     },
     {
       "punchId": 3,
-      "taskName": "Provision portable toilets",
+      "description": "Provision portable toilets",
       "contractor": "Adam Dudley",
       "dueDate": "10-20-2019",
       "complete": false
