@@ -2,6 +2,9 @@ import React, { Fragment, useEffect } from 'react';
 import SearchBar from './components/layout/SearchBar';
 import AddButton from './components/layout/AddButton';
 import AddTaskModal from './components/tasks/AddTaskModal';
+import EditTaskModal from './components/tasks/EditTaskModal';
+import AddContractorModal from './components/contractors/AddContractorModal';
+import ContractorListModal from './components/contractors/ContractorListModal';
 import Tasks from './components/tasks/Tasks';
 
 import 'materialize-css/dist/css/materialize.min.css';
@@ -19,6 +22,9 @@ const App = () => {
       <div className='container'>
         <AddButton />
         <AddTaskModal />
+        <EditTaskModal />
+        <AddContractorModal />
+        <ContractorListModal />
         <Tasks />
       </div>
     </Fragment>

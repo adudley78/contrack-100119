@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import M from 'materialize-css/dist/js/materialize.min.js';
 
-const AddTaskModal = () => {
+const EditTaskModal = () => {
   const [description, setDescription] = useState('');
   const [complete, setComplete] = useState(false);
   const [contractor, setContractor] = useState('');
@@ -22,7 +22,7 @@ const AddTaskModal = () => {
   };
 
   return (
-    <div id='add-task-modal' className='modal' style={modalStyle}>
+    <div id='edit-task-modal' className='modal' style={modalStyle}>
       <div className='modal-content'>
         <h4>Enter Punch List Task</h4>
         <div className='row'>
@@ -93,4 +93,4 @@ const modalStyle = {
   height: '75%'
 };
 
-export default AddTaskModal;
+export default EditTaskModal;
