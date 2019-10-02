@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { addTask } from '../../actions/taskActions';
 import M from 'materialize-css/dist/js/materialize.min.js';
 
-const AddTaskModal = () => {
+const AddTaskModal = ({ addTask }) => {
   const [description, setDescription] = useState('');
   const [complete, setComplete] = useState(false);
   const [contractor, setContractor] = useState('');
@@ -13,7 +16,16 @@ const AddTaskModal = () => {
           'You must add a description and select a contractor to create a new task!'
       });
     } else {
-      console.log(description, contractor, complete);
+      const newTask = {
+        description,
+        complete,
+        date: new Date(),
+        contractor
+      };
+
+      addTask(newTask);
+
+      M.toast({ html: `Task added by ${contractor}` });
 
       setDescription('');
       setContractor('');
@@ -88,9 +100,16 @@ const AddTaskModal = () => {
   );
 };
 
+AddTaskModal.propTypes = {
+  addTask: PropTypes.func.isRequired
+};
+
 const modalStyle = {
   width: '75%',
   height: '75%'
 };
 
-export default AddTaskModal;
+export default connect(
+  null,
+  { addTask }
+)(AddTaskModal);

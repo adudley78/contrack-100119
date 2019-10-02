@@ -1,4 +1,4 @@
-import { GET_TASKS, SET_LOADING, TASKS_ERROR } from './types';
+import { GET_TASKS, SET_LOADING, TASKS_ERROR, ADD_TASK } from './types';
 
 export const getTasks = () => async dispatch => {
   try {
@@ -11,10 +11,35 @@ export const getTasks = () => async dispatch => {
       type: GET_TASKS,
       payload: data
     });
-  } catch (error) {
+  } catch (err) {
     dispatch({
       type: TASKS_ERROR,
-      payload: error.response.data
+      payload: err.response.statusText
+    });
+  }
+};
+
+export const addTask = task => async dispatch => {
+  try {
+    setLoading();
+
+    const res = await fetch('/tasks', {
+      method: 'POST',
+      body: JSON.stringify(task),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    const data = await res.json();
+
+    dispatch({
+      type: ADD_TASK,
+      payload: data
+    });
+  } catch (err) {
+    dispatch({
+      type: TASKS_ERROR,
+      payload: err.response.statusText
     });
   }
 };

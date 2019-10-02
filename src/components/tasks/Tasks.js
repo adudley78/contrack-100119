@@ -28,7 +28,8 @@ const Tasks = ({ task: { tasks, loading }, getTasks }) => {
 };
 
 Tasks.propTypes = {
-  task: PropTypes.object.isRequired
+  task: PropTypes.object.isRequired,
+  getTasks: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
