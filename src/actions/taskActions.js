@@ -3,7 +3,10 @@ import {
   SET_LOADING,
   TASKS_ERROR,
   ADD_TASK,
-  DELETE_TASK
+  DELETE_TASK,
+  UPDATE_TASK,
+  SET_CURRENT,
+  CLEAR_CURRENT
 } from './types';
 
 export const getTasks = () => async dispatch => {
@@ -68,6 +71,45 @@ export const deleteTask = id => async dispatch => {
       payload: err.response.statusText
     });
   }
+};
+
+export const updateTask = task => async dispatch => {
+  try {
+    setLoading();
+
+    const res = await fetch(`/tasks/${task.id}`, {
+      method: 'PUT',
+      body: JSON.stringify(task),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+
+    const data = await res.json();
+
+    dispatch({
+      type: UPDATE_TASK,
+      payload: data
+    });
+  } catch (err) {
+    dispatch({
+      type: TASKS_ERROR,
+      payload: err.response.statusText
+    });
+  }
+};
+
+export const setCurrent = task => {
+  return {
+    type: SET_CURRENT,
+    payload: task
+  };
+};
+
+export const clearCurrent = () => {
+  return {
+    type: CLEAR_CURRENT
+  };
 };
 
 export const setLoading = () => {

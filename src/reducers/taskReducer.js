@@ -3,7 +3,10 @@ import {
   SET_LOADING,
   TASKS_ERROR,
   ADD_TASK,
-  DELETE_TASK
+  DELETE_TASK,
+  UPDATE_TASK,
+  SET_CURRENT,
+  CLEAR_CURRENT
 } from '../actions/types';
 
 const initialState = {
@@ -32,6 +35,23 @@ export default (state = initialState, action) => {
         ...state,
         tasks: state.tasks.filter(task => task.id !== action.payload),
         loading: false
+      };
+    case UPDATE_TASK:
+      return {
+        ...state,
+        tasks: state.tasks.map(task =>
+          task.id === action.payload.id ? action.payload : task
+        )
+      };
+    case SET_CURRENT:
+      return {
+        ...state,
+        current: action.payload
+      };
+    case CLEAR_CURRENT:
+      return {
+        ...state,
+        current: null
       };
     case SET_LOADING:
       return {

@@ -2,12 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Moment from 'react-moment';
 import PropTypes from 'prop-types';
-import { deleteTask } from '../../actions/taskActions';
+import { deleteTask, setCurrent } from '../../actions/taskActions';
 
 import M from 'materialize-css/dist/js/materialize.min.js';
 
 // TODO: Destructure task
-const TaskItem = ({ task, deleteTask }) => {
+const TaskItem = ({ task, deleteTask, setCurrent }) => {
   const onDelete = () => {
     deleteTask(task.id);
     M.toast({ html: 'Task deleted' });
@@ -21,6 +21,7 @@ const TaskItem = ({ task, deleteTask }) => {
           className={`modal-trigger ${
             task.complete ? 'green-text' : 'red-text'
           }`}
+          onClick={() => setCurrent(task)}
         >
           {task.description} {task.complete ? '(complete)' : '(incomplete)'}
         </a>
@@ -41,10 +42,11 @@ const TaskItem = ({ task, deleteTask }) => {
 
 TaskItem.propTypes = {
   task: PropTypes.object.isRequired,
-  deleteTask: PropTypes.func.isRequired
+  deleteTask: PropTypes.func.isRequired,
+  setCurrent: PropTypes.func.isRequired
 };
 
 export default connect(
   null,
-  { deleteTask }
+  { deleteTask, setCurrent }
 )(TaskItem);

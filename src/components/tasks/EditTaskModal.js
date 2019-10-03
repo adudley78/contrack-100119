@@ -1,10 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import M from 'materialize-css/dist/js/materialize.min.js';
+import { updateTask } from '../../actions/taskActions';
 
-const EditTaskModal = () => {
+const EditTaskModal = ({ current, updateTask }) => {
   const [description, setDescription] = useState('');
   const [complete, setComplete] = useState(false);
   const [contractor, setContractor] = useState('');
+
+  useEffect(() => {
+    if (current) {
+      setDescription(current.description);
+      setContractor(current.contractor);
+      setComplete(current.complete);
+    }
+  }, [current]);
 
   const onSubmit = () => {
     if (description === '' || contractor === '') {
@@ -13,7 +24,16 @@ const EditTaskModal = () => {
           'You must add a description and select a contractor to create a new task!'
       });
     } else {
-      console.log(description, contractor, complete);
+      const updTask = {
+        id: current.id,
+        description,
+        contractor,
+        complete,
+        date: new Date()
+      };
+
+      updateTask(updTask);
+      M.toast({ html: `Task updated by ${contractor}` });
 
       setDescription('');
       setContractor('');
@@ -33,9 +53,6 @@ const EditTaskModal = () => {
               value={description}
               onChange={e => setDescription(e.target.value)}
             />
-            <label htmlFor='description' className='active'>
-              Task description
-            </label>
           </div>
         </div>
 
@@ -93,4 +110,16 @@ const modalStyle = {
   height: '75%'
 };
 
-export default EditTaskModal;
+EditTaskModal.propTypes = {
+  current: PropTypes.object,
+  updateTask: PropTypes.func.isRequired
+};
+
+const mapStateToProps = state => ({
+  current: state.task.current
+});
+
+export default connect(
+  mapStateToProps,
+  { updateTask }
+)(EditTaskModal);

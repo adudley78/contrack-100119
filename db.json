@@ -1,11 +1,11 @@
 {
   "tasks": [
     {
-      "description": "Order security fenching",
-      "complete": false,
-      "date": "2019-10-02T23:47:50.460Z",
+      "id": 1,
+      "description": "Order security fencing",
       "contractor": "Levi Nelson",
-      "id": 1
+      "complete": true,
+      "date": "2019-10-03T13:15:54.556Z"
     },
     {
       "description": "Provision portable toilets",
