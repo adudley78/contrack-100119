@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import ContractorSelectOptions from '../contractors/ContractorSelectOptions';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import M from 'materialize-css/dist/js/materialize.min.js';
@@ -67,9 +68,7 @@ const EditTaskModal = ({ current, updateTask }) => {
               <option value='' disabled>
                 Select Contractor
               </option>
-              <option value='Luke Hansen'>Luke Hansen</option>
-              <option value='Levi Nelson'>Levi Nelson</option>
-              <option value='Adam Dudley'>Adam Dudley</option>
+              <ContractorSelectOptions />
             </select>
           </div>
         </div>
