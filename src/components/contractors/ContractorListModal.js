@@ -1,30 +1,25 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import ContractorItem from './ContractorItem';
+import { getContractors } from '../../actions/contractorActions';
 
-const ContractorListModal = () => {
-  const [contractors, setContractors] = useState([]);
-  const [loading, setLoading] = useState(false);
-
+const ContractorListModal = ({
+  getContractors,
+  contractor: { contractors, loading }
+}) => {
   useEffect(() => {
     getContractors();
     // eslint-disable-next-line
-  }, []); // [] Ensure this only runs once
-
-  const getContractors = async () => {
-    setLoading(true);
-    const res = await fetch('/contractors');
-    const data = await res.json();
-
-    setContractors(data);
-    setLoading(false);
-  };
+  }, []);
 
   return (
-    <div id='contractor-list-modal' className='modal'>
+    <div id='tech-list-modal' className='modal'>
       <div className='modal-content'>
-        <h4>Contractor List</h4>
+        <h4>Technician List</h4>
         <ul className='collection'>
           {!loading &&
+            contractors !== null &&
             contractors.map(contractor => (
               <ContractorItem contractor={contractor} key={contractor.id} />
             ))}
@@ -34,4 +29,16 @@ const ContractorListModal = () => {
   );
 };
 
-export default ContractorListModal;
+ContractorListModal.propTypes = {
+  contractor: PropTypes.object.isRequired,
+  getContractors: PropTypes.func.isRequired
+};
+
+const mapStateToProps = state => ({
+  contractor: state.contractor
+});
+
+export default connect(
+  mapStateToProps,
+  { getContractors }
+)(ContractorListModal);
