@@ -1,4 +1,10 @@
-import { GET_TASKS, SET_LOADING, TASKS_ERROR, ADD_TASK } from './types';
+import {
+  GET_TASKS,
+  SET_LOADING,
+  TASKS_ERROR,
+  ADD_TASK,
+  DELETE_TASK
+} from './types';
 
 export const getTasks = () => async dispatch => {
   try {
@@ -35,6 +41,26 @@ export const addTask = task => async dispatch => {
     dispatch({
       type: ADD_TASK,
       payload: data
+    });
+  } catch (err) {
+    dispatch({
+      type: TASKS_ERROR,
+      payload: err.response.statusText
+    });
+  }
+};
+
+export const deleteTask = id => async dispatch => {
+  try {
+    setLoading();
+
+    await fetch(`/tasks/${id}`, {
+      method: 'DELETE'
+    });
+
+    dispatch({
+      type: DELETE_TASK,
+      payload: id
     });
   } catch (err) {
     dispatch({
