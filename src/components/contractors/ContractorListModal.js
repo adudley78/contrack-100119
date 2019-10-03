@@ -14,9 +14,9 @@ const ContractorListModal = ({
   }, []);
 
   return (
-    <div id='tech-list-modal' className='modal'>
+    <div id='contractor-list-modal' className='modal'>
       <div className='modal-content'>
-        <h4>Technician List</h4>
+        <h4>Contractor List</h4>
         <ul className='collection'>
           {!loading &&
             contractors !== null &&

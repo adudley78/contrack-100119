@@ -26,6 +26,14 @@ export default (state = initialState, action) => {
         contractor: [...state.contractors, action.payload],
         loading: false
       };
+    case DELETE_CONTRACTOR:
+      return {
+        state,
+        contractors: state.contractors.filter(
+          contractor => contractor.id !== action.payload
+        ),
+        loading: false
+      };
     case SET_LOADING:
       return {
         ...state,

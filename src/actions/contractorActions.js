@@ -50,6 +50,26 @@ export const addContractor = contractor => async dispatch => {
   }
 };
 
+export const deleteContractor = id => async dispatch => {
+  try {
+    setLoading();
+
+    await fetch(`/contractors/${id}`, {
+      method: 'DELETE'
+    });
+
+    dispatch({
+      type: DELETE_CONTRACTOR,
+      payload: id
+    });
+  } catch (err) {
+    dispatch({
+      type: CONTRACTORS_ERROR,
+      payload: err.response.statusText
+    });
+  }
+};
+
 export const setLoading = () => {
   return {
     type: SET_LOADING
