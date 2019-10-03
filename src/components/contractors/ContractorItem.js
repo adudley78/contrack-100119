@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const ContractorItem = ({ contractor }) => {
+const ContractorItem = ({ contractor: { id, firstName, lastName } }) => {
   return (
     <li className='collection-item'>
       <div>
-        {contractor.firstName} {contractor.lastName}
+        {firstName} {lastName}
         <a href='#!' className='secondary-content'>
           <i className='material-icons grey-text'>delete</i>
         </a>

@@ -20,10 +20,23 @@ export default (state = initialState, action) => {
         contractors: action.payload,
         loading: false
       };
+    case ADD_CONTRACTOR:
+      return {
+        ...state,
+        contractor: [...state.contractors, action.payload],
+        loading: false
+      };
     case SET_LOADING:
       return {
         ...state,
         loading: true
+      };
+    case CONTRACTORS_ERROR:
+      console.error(action.payload);
+      return {
+        ...state,
+        error: action.payload,
+        loading: false
       };
     default:
       return state;

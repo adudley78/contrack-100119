@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { addContractor } from '../../actions/contractorActions';
 import M from 'materialize-css/dist/js/materialize.min.js';
 
-const AddContractorModal = () => {
+const AddContractorModal = ({ addContractor }) => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
 
@@ -12,7 +15,14 @@ const AddContractorModal = () => {
           'You must add a description and select a contractor to create a new task!'
       });
     } else {
-      console.log(firstName, lastName);
+      addContractor({
+        firstName,
+        lastName
+      });
+
+      M.toast({
+        html: `${firstName} ${lastName} was added as a contractor.`
+      });
 
       setFirstName('');
       setLastName('');
@@ -65,4 +75,11 @@ const AddContractorModal = () => {
   );
 };
 
-export default AddContractorModal;
+AddContractorModal.propTypes = {
+  addContractor: PropTypes.func.isRequired
+};
+
+export default connect(
+  null,
+  { addContractor }
+)(AddContractorModal);
