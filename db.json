@@ -5,21 +5,28 @@
       "description": "Order security fencing",
       "contractor": "Levi Nelson",
       "complete": true,
-      "date": "2019-10-03T13:15:54.556Z"
+      "date": "2019-10-03T14:39:05.188Z"
     },
     {
+      "id": 2,
       "description": "Provision portable toilets",
-      "complete": true,
-      "date": "2019-10-02T23:48:09.540Z",
       "contractor": "Adam Dudley",
-      "id": 2
+      "complete": true,
+      "date": "2019-10-03T14:38:57.311Z"
     },
     {
+      "id": 3,
       "description": "Submit permit applications",
-      "complete": false,
-      "date": "2019-10-02T23:48:28.801Z",
       "contractor": "Luke Hansen",
-      "id": 3
+      "complete": true,
+      "date": "2019-10-03T14:39:02.436Z"
+    },
+    {
+      "description": "Hang the drywall",
+      "complete": false,
+      "date": "2019-10-03T14:39:45.015Z",
+      "contractor": "Kyle King",
+      "id": 4
     }
   ],
   "contractors": [
